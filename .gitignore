@@ -1,0 +1,15 @@
+# Ambiente Virtual Python
+venv/
+.venv/
+
+# Banco de Dados Local
+*.db
+
+# Arquivos de Credenciais e Ambiente
+*.env
+google_credentials.json
+
+# Cache e arquivos de sistema
+__pycache__/
+*.pyc
+.DS_Store
