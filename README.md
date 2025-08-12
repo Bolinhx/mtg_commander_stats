@@ -61,8 +61,8 @@ O projeto está atualmente na transição da Fase 1 para a Fase 3 do nosso plano
 
 1.  **Clone o Repositório:**
     ```bash
-    git clone [URL_DO_SEU_REPO]
-    cd [NOME_DA_PASTA]
+    git clone https://github.com/Bolinhx/mtg_commander_stats.git
+    cd mtg_commander_stats
     ```
 2.  **Configure o Ambiente:**
     ```bash
