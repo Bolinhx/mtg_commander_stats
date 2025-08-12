@@ -27,37 +27,12 @@ O pipeline extrai dados de comandantes da API pública do Scryfall, processa os 
 O diagrama abaixo ilustra o fluxo de dados do projeto, desde as fontes de dados até a camada de visualização final.
 
 ```mermaid
-graph LR
-    subgraph "Fontes de Dados"
-        A[Arquivo Excel<br/>(Histórico de Partidas)]
-        B[API do Scryfall<br/>(Dados dos Comandantes)]
-    end
-
-    subgraph "ETL (Python Scripts)"
-        C["etl_scryfall.py<br/>(Popula Dim_Comandantes)"]
-        D["etl_historico.py<br/>(Processa Partidas)"]
-    end
-
-    subgraph "Data Warehouse Local"
-        E[Banco de Dados<br/>(DuckDB)]
-    end
-
-    subgraph "Ponte para BI"
-        F["export_to_gsheets.py<br/>(Exporta View)"]
-        G[Google Sheets<br/>(Dados Limpos)]
-    end
-    
-    subgraph "Visualização"
-        H((Dashboard Interativo<br/>Google Looker Studio))
-    end
-
-    A --> D;
-    B --> C;
-    C --> E;
-    D --> E;
-    E -- Lê a View --> F;
-    F -- Escreve em --> G;
-    G -- Conecta com --> H;
+graph TD
+    A["Fontes de Dados<br/>(Excel + API Scryfall)"] --> B["Scripts ETL<br/>(Python + Pandas)"];
+    B --> C["Banco de Dados Local<br/>(DuckDB)"];
+    C --> D["Exportação<br/>(Python Script)"];
+    D --> E["Ponte de Dados<br/>(Google Sheets)"];
+    E --> F((Dashboard Final<br/>Google Looker Studio));
 ```
 
 ## 🚀 Status e Próximos Passos
